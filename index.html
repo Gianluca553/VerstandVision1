@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerstandVision - Intelligent Agentic Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        dark: '#1F2937',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #10B981 100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-primary font-bold text-2xl">VerstandVision</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#home" class="border-primary text-dark inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#industries" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Industries</a>
+                        <a href="#process" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Process</a>
+                        <a href="#solutions" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Solutions</a>
+                        <a href="#differentiators" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" onclick="document.getElementById('differentiators').scrollIntoView({behavior: 'smooth'})">Differentiators</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="#contact" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#home" class="bg-primary border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#industries" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Industries</a>
+                <a href="#process" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Process</a>
+                <a href="#solutions" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Solutions</a>
+                <a href="#differentiators" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" onclick="document.getElementById('differentiators').scrollIntoView({behavior: 'smooth'})">Differentiators</a>
+                <div class="pt-4 pb-3 border-t border-gray-200">
+                    <div class="flex items-center px-4">
+                        <button class="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            <span class="sr-only">Sign in</span>
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-3 space-y-1">
+                        <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Get Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="home" class="relative gradient-bg overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+                            <span class="block">Intelligent Automation</span>
+                            <span class="block text-indigo-200">For The Modern Enterprise</span>
+                        </h1>
+                        <p class="mt-3 text-base text-indigo-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            VerstandVision bridges the gap between human intellect and AI vision to transform your business workflows with agentic automation systems.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full animate-float" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="">
+        </div>
+    </div>
+
+    <!-- Industries Served -->
+    <div id="industries" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Industries Transformed</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Powering innovation across sectors
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Our agentic automation systems deliver measurable impact across diverse industries
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-50 text-primary">
+                            <i class="fas fa-university text-xl"></i>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <h3 class="text-lg font-medium text-dark">Finance</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Fraud detection, risk analysis, compliance automation
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-50 text-secondary">
+                            <i class="fas fa-heartbeat text-xl"></i>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <h3 class="text-lg font-medium text-dark">Healthcare</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Patient data analysis, appointment scheduling, diagnostics
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-50 text-blue-600">
+                            <i class="fas fa-cloud text-xl"></i>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <h3 class="text-lg font-medium text-dark">SaaS</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Customer onboarding, support automation, usage analytics
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-50 text-purple-600">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <h3 class="text-lg font-medium text-dark">E-Commerce</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Personalized recommendations, inventory management
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div id="process" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Process</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    How VerstandVision Works
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Transform your workflows in three simple steps
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                    <div class="relative feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow">
+                        <div class="absolute -top-6 left-6 flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <span class="text-xl font-bold">1</span>
+                        </div>
+                        <h3 class="mt-8 text-lg leading-6 font-medium text-dark">Workflow Analysis</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Our system analyzes your existing processes to identify automation opportunities and bottlenecks.
+                        </p>
+                    </div>
+
+                    <div class="relative feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow">
+                        <div class="absolute -top-6 left-6 flex items-center justify-center h-12 w-12 rounded-md bg-secondary text-white">
+                            <span class="text-xl font-bold">2</span>
+                        </div>
+                        <h3 class="mt-8 text-lg leading-6 font-medium text-dark">Agent Configuration</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            We configure specialized AI agents tailored to your specific business needs and objectives.
+                        </p>
+                    </div>
+
+                    <div class="relative feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow">
+                        <div class="absolute -top-6 left-6 flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                            <span class="text-xl font-bold">3</span>
+                        </div>
+                        <h3 class="mt-8 text-lg leading-6 font-medium text-dark">Continuous Optimization</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Our systems learn and adapt over time, delivering increasing value through continuous improvement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Automations -->
+    <div id="solutions" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Solutions</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Featured Automations
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Explore our most impactful agentic automation solutions
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-primary">
+                            <i class="fas fa-headset text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Intelligent Customer Support</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI agents that handle 80% of customer inquiries with human-like understanding and context awareness.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-primary">
+                                Customer Service
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-secondary">
+                            <i class="fas fa-file-invoice-dollar text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Financial Process Automation</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            End-to-end automation of invoice processing, expense management, and financial reporting.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-secondary">
+                                Finance
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600">
+                            <i class="fas fa-project-diagram text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">R&D Knowledge Synthesis</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI agents that analyze research papers, patents, and data to accelerate innovation cycles.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-600">
+                                Research & Development
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-100 text-yellow-600">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Lead Generation & Qualification</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI tools capture, score, and route leads automatically. Boosts conversion rates and shortens sales cycles.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-600">
+                                Sales
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-100 text-purple-600">
+                            <i class="fas fa-user-plus text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Customer Onboarding</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Automates welcome emails, account setup, and training sequences. Ensures a smooth, scalable experience for new clients.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-purple-100 text-purple-600">
+                                Customer Success
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600">
+                            <i class="fas fa-file-invoice text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Invoice Processing</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI extracts data, matches purchase orders, and triggers payments. Reduces errors and speeds up cash flow.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-600">
+                                Finance
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600">
+                            <i class="fas fa-boxes text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Order Management</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Automates order intake, fulfillment tracking, and status updates. Improves accuracy and customer satisfaction.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-600">
+                                Operations
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-headset text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Customer Support & Claims</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI agents handle FAQs, route tickets, and escalate complex issues. Cuts response time and improves resolution rates.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-600">
+                                Support
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Employee Onboarding & Offboarding</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Automates provisioning of accounts, training modules, and exit checklists. Saves HR time and ensures compliance.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-600">
+                                HR
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gray-100 text-gray-600">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">KYC & Risk Scoring</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI verifies identities, flags anomalies, and scores risk profiles. Essential for finance, insurance, and compliance-heavy industries.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600">
+                                Compliance
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-orange-100 text-orange-600">
+                            <i class="fas fa-truck text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Supplier Onboarding</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Streamlines contract approvals, data collection, and compliance checks. Speeds up procurement and vendor management.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-100 text-orange-600">
+                                Procurement
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-100 text-teal-600">
+                            <i class="fas fa-clipboard-check text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Quality Control & Compliance</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            AI monitors processes, flags deviations, and logs audit trails. Keeps operations aligned with industry standards.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-teal-100 text-teal-600">
+                                Quality
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card transition-all duration-300 ease-in-out bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-pink-100 text-pink-600">
+                            <i class="fas fa-exchange-alt text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Rental & Return Processes</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Automates scheduling, condition checks, and refund workflows. Ideal for logistics, retail, and equipment-based businesses.
+                        </p>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-600">
+                                Logistics
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Testimonials</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    What Our Clients Say
+                </p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-dark">Sarah Johnson</h4>
+                            <p class="text-gray-500">CTO, FinTech Solutions</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "VerstandVision's automation reduced our customer onboarding time by 80%. Their AI agents handle complex cases we never thought could be automated."
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/54.jpg" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-dark">Michael Chen</h4>
+                            <p class="text-gray-500">COO, HealthBridge</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "The R&D knowledge synthesis tools have accelerated our drug discovery pipeline by 6 months. The ROI was evident within the first quarter."
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-dark">Priya Patel</h4>
+                            <p class="text-gray-500">Director of Operations, ShopGlobal</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "Our order fulfillment accuracy improved to 99.8% after implementing VerstandVision's automation. Customer complaints dropped by 65% almost immediately."
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-dark">David Wilson</h4>
+                            <p class="text-gray-500">CIO, Global Logistics Inc.</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "The supply chain automation reduced our operational costs by 40% while improving delivery times. VerstandVision exceeded all our expectations."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why VerstandVision -->
+    <div id="differentiators" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Differentiators</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Why VerstandVision
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    What sets our agentic automation platform apart
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-primary">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Strategic Intelligence</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Our agents don't just execute tasks—they understand context, make judgments, and adapt to changing conditions.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-secondary">
+                            <i class="fas fa-puzzle-piece text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Modular Architecture</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Mix and match specialized agents to create custom solutions that evolve with your business needs.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Enterprise-Grade Security</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Military-grade encryption, strict access controls, and comprehensive audit trails built into every agent.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-100 text-purple-600">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-dark">Measurable Impact</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            We quantify ROI with detailed metrics and KPIs that demonstrate the value of every automation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="py-12 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold text-dark mb-4">Contact Us</h2>
+            <p class="text-lg text-gray-600">
+                Reach out to us at <a href="mailto:verstandvision@gmail.com" class="text-primary hover:underline">verstandvision@gmail.com</a> or call <a href="tel:5165518821" class="text-primary hover:underline">(516) 551-8821</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('[aria-controls="mobile-menu"]').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight current section in navigation
+        const sections = document.querySelectorAll('div[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('border-primary', 'text-dark');
+                link.classList.add('border-transparent', 'text-gray-500');
+                
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('border-transparent', 'text-gray-500');
+                    link.classList.add('border-primary', 'text-dark');
+                }
+            });
+        });
+    </script></html>
